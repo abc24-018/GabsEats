@@ -1,75 +1,68 @@
-:root {
-    --primary: #0066CC;       /* Botswana blue */
-    --secondary: #000000;     /* Black */
-    --accent: #FFD700;        /* Gold accent */
-    --text: #333333;
-    --light-bg: #f9f9f9;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
-body {
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
-    color: var(--text);
-    margin: 0;
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
     padding: 0;
 }
 
-/* Header Styles */
-header {
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+nav ul li {
+    display: inline;
+    margin: 0 15px;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
 }
 
-.logo img {
-    height: 50px;
-}
-
-/* Hero Section */
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('../images/hero-bg.jpg') center/cover;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#hero {
+    background: url('images/hero.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 50px 0;
     text-align: center;
-    color: white;
 }
 
-/* Spot Cards */
-.spot-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
+input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
 }
 
-.spot-card:hover {
-    transform: translateY(-5px);
+section {
+    padding: 20px;
 }
 
-/* Responsive Grid */
-.spot-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem 5%;
+.featured-spot, .restaurant-item {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
 }
 
-@media (max-width: 768px) {
-    .spot-grid {
-        grid-template-columns: 1fr;
-    }
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    width: 30%;
+    margin: 1.5%;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
 }
