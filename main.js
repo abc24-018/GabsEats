@@ -39,3 +39,20 @@ document.getElementById('cuisine-filter').addEventListener('change', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     renderSpots(foodSpots);
 });
+
+// In main.js
+function initMap() {
+    const map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -24.6586, lng: 25.9086}, // Gaborone coordinates
+        zoom: 12
+    });
+    
+    // Add markers for each spot
+    foodSpots.forEach(spot => {
+        new google.maps.Marker({
+            position: {lat: spot.lat, lng: spot.lng},
+            map: map,
+            title: spot.name
+        });
+    });
+}
