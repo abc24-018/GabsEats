@@ -1,75 +1,79 @@
 :root {
-    --primary: #0066CC;       /* Botswana blue */
-    --secondary: #000000;     /* Black */
-    --accent: #FFD700;        /* Gold accent */
-    --text: #333333;
-    --light-bg: #f9f9f9;
+    /* Color Palette inspired by Botswana's landscape */
+    --primary-color: #1A5F7A;     /* Deep Blue */
+    --secondary-color: #FFC107;   /* Warm Yellow */
+    --text-color: #333333;
+    --background-color: #F4F4F4;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: var(--text);
-    margin: 0;
-    padding: 0;
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
-/* Header Styles */
-header {
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+/* Responsive Typography */
+html {
+    font-size: 16px;
 }
 
-nav {
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* Responsive Navigation */
+nav ul {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
+    justify-content: space-around;
+    list-style: none;
 }
 
-.logo img {
-    height: 50px;
+@media screen and (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-/* Hero Section */
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('../images/hero-bg.jpg') center/cover;
-    height: 60vh;
+/* Form Accessibility */
+input, textarea, select {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+/* Responsive Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Flexbox Grid System */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
+    flex-wrap: wrap;
 }
 
-/* Spot Cards */
-.spot-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.spot-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Responsive Grid */
-.spot-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem 5%;
-}
-
-@media (max-width: 768px) {
-    .spot-grid {
-        grid-template-columns: 1fr;
+/* Mobile-First Approach */
+@media screen and (min-width: 768px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
     }
 }
