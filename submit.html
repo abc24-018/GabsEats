@@ -22,21 +22,41 @@
     </header>
 
     <main>
-       <form id="spot-form">
-    <input type="text" id="spot-name" required placeholder="Spot Name">
-    <select id="cuisine-type" required>
-        <option value="">Select Cuisine</option>
-        <option value="traditional">Traditional</option>
-    </select>
-    <button type="submit">Submit Spot</button>
-</form>
+      <section class="feedback-section">
+            <h1>Share Your Culinary Experience</h1>
+            <form id="feedback-form" aria-label="Restaurant Review Form">
+                <div id="error-messages" class="error-container" role="alert" style="display:none;"></div>
 
-<script>
-    document.getElementById('spot-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Add form handling logic
-    });
-</script>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required aria-required="true">
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required aria-required="true">
+
+                <label for="restaurant">Restaurant</label>
+                <select id="restaurant" name="restaurant" required>
+                    <option value="">Select a Restaurant</option>
+                    <option value="restaurant1">Botanical Gardens Restaurant</option>
+                    <option value="restaurant2">River Walk Café</option>
+                    <!-- More restaurant options -->
+                </select>
+
+                <label for="rating">Rating</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Select Rating</option>
+                    <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                    <option value="4">⭐⭐⭐⭐ Very Good</option>
+                    <option value="3">⭐⭐⭐ Good</option>
+                    <option value="2">⭐⭐ Fair</option>
+                    <option value="1">⭐ Poor</option>
+                </select>
+
+                <label for="review">Your Review</label>
+                <textarea id="review" name="review" rows="5" required aria-required="true"></textarea>
+
+                <button type="submit">Submit Review</button>
+            </form>
+        </section>
     </main>
 
     <footer>
