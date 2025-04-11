@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Food Spots - PutYouOn</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="PutYouOn Logo" class="logo">
+                PutYouOn
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="discover.html">Discover</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="feedback.html">Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-lg-3">
+                    <input class="form-control me-2" type="search" placeholder="Find a food spot..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-dark py-5 text-white">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-lg-8">
+                    <div class="my-5">
+                        <h1 class="display-5 fw-bold">Discover Hidden Food Spots</h1>
+                        <p class="lead">Explore local favorites and hidden gems in Gaborone. Use the filters below to find exactly what you're looking for.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filter Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-6">
+                        <label for="locationFilter" class="form-label">Location</label>
+                        <select class="form-select" id="locationFilter">
+                            <option value="all" selected>All Locations</option>
+                            <option value="cbd">CBD</option>
+                            <option value="main-mall">Main Mall</option>
+                            <option value="broadhurst">Broadhurst</option>
+                            <option value="phakalane">Phakalane</option>
+                            <option value="extension">Extension</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <label for="cuisineFilter" class="form-label">Cuisine</label>
+                        <select class="form-select" id="cuisineFilter">
+                            <option value="all" selected>All Cuisines</option>
+                            <option value="local">Local</option>
+                            <option value="indian">Indian</option>
+                            <option value="italian">Italian</option>
+                            <option value="chinese">Chinese</option>
+                            <option value="fusion">Fusion</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <label for="priceFilter" class="form-label">Price Range</label>
+                        <select class="form-select" id="priceFilter">
+                            <option value="all" selected>All Prices</option>
+                            <option value="$">$ (Budget)</option>
+                            <option value="$$">$$ (Moderate)</option>
+                            <option value="$$$">$$$ (Expensive)</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <label for="ratingFilter" class="form-label">Rating</label>
+                        <select class="form-select" id="ratingFilter">
+                            <option value="all" selected>All Ratings</option>
+                            <option value="4.5">4.5+ Stars</option>
+                            <option value="4">4+ Stars</option>
+                            <option value="3.5">3.5+ Stars</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="openNow">
+                            <label class="form-check-label" for="openNow">Open Now</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="delivery">
+                            <label class="form-check-label" for="delivery">Delivery Available</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="vegetarian">
+                            <label class="form-check-label" for="vegetarian">Vegetarian Options</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-primary active" id="listViewBtn">
+                                <i class="fas fa-list me-1"></i> List View
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" id="mapViewBtn">
+                                <i class="fas fa-map-marked-alt me-1"></i> Map View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Toggle Content -->
+            <div class="row mt-4">
+                <!-- List View (default) -->
+                <div class="col-12" id="listView">
+                    <div class="row">
+                        <!-- Restaurant 1 -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100 shadow-sm spot-card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="images/restaurants/spot1.jpg" class="img-fluid rounded-start h-100" alt="The Urban Kitchen" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="badge bg-primary mb-2">Brunch</span>
+                                                <span class="price-range">$$</span>
+                                            </div>
+                                            <h5 class="card-title">The Urban Kitchen</h5>
+                                            <p class="card-text"><small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> CBD, Gaborone</small></p>
+                                            <p class="card-text small">A cozy brunch spot with amazing pancakes and coffee in CBD.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="ratings">
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                                    <span class="ms-1">4.5</span>
+                                                </div>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Restaurant 2 -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100 shadow-sm spot-card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="images/restaurants/spot2.jpg" class="img-fluid rounded-start h-100" alt="Spice Fusion" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="badge bg-danger mb-2">Dinner</span>
+                                                <span class="price-range">$$$</span>
+                                            </div>
+                                            <h5 class="card-title">Spice Fusion</h5>
+                                            <p class="card-text"><small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> Extension 10, Gaborone</small></p>
+                                            <p class="card-text small">Hidden gem serving authentic Indian cuisine with a local twist.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="ratings">
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="far fa-star text-warning"></i>
+                                                    <span class="ms-1">4.0</span>
+                                                </div>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Restaurant 3 -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100 shadow-sm spot-card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="images/restaurants/spot3.jpg" class="img-fluid rounded-start h-100" alt="Street Corner Café" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="badge bg-success mb-2">Street Food</span>
+                                                <span class="price-range">$</span>
+                                            </div>
+                                            <h5 class="card-title">Street Corner Café</h5>
+                                            <p class="card-text"><small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> Main Mall, Gaborone</small></p>
+                                            <p class="card-text small">Local street food favorites served in a casual setting by Main Mall.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="ratings">
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <span class="ms-1">5.0</span>
+                                                </div>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Restaurant 4 -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100 shadow-sm spot-card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="images/restaurants/spot1.jpg" class="img-fluid rounded-start h-100" alt="Aroma Café" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="badge bg-info text-dark mb-2">Café</span>
+                                                <span class="price-range">$$</span>
+                                            </div>
+                                            <h5 class="card-title">Aroma Café</h5>
+                                            <p class="card-text"><small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> Broadhurst, Gaborone</small></p>
+                                            <p class="card-text small">Artisanal coffee and homemade pastries in a cozy setting.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="ratings">
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                                    <span class="ms-1">4.5</span>
+                                                </div>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Restaurant 5 -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100 shadow-sm spot-card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="images/restaurants/spot2.jpg" class="img-fluid rounded-start h-100" alt="Mouthful BBQ" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="badge bg-warning text-dark mb-2">BBQ</span>
+                                                <span class="price-range">$$</span>
+                                            </div>
+                                            <h5 class="card-title">Mouthful BBQ</h5>
+                                            <p class="card-text"><small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> Phakalane, Gaborone</small></p>
+                                            <p class="card-text small">Classic BBQ spot with amazing grilled meats and signature sauce.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="ratings">
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                                    <i class="far fa-star text-warning"></i>
+                                                    <span class="ms-1">3.5</span>
+                                                </div>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Restaurant 6 -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100 shadow-sm spot-card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="images/restaurants/spot3.jpg" class="img-fluid rounded-start h-100" alt="Taste of Botswana" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="badge bg-secondary mb-2">Local Cuisine</span>
+                                                <span class="price-range">$$</span>
+                                            </div>
+                                            <h5 class="card-title">Taste of Botswana</h5>
+                                            <p class="card-text"><small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> Extension, Gaborone</small></p>
+                                            <p class="card-text small">Authentic Setswana cuisine with a modern presentation.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="ratings">
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                                    <span class="ms-1">4.5</span>
+                                                </div>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Map View (hidden by default) -->
+                <div class="col-12 d-none" id="mapView">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-0">
+                            <div id="map" style="height: 600px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>PutYouOn</h5>
+                    <p class="text-muted">Discovering Gaborone's hidden food gems.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-decoration-none me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-decoration-none me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-decoration-none me-2"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+                        <li><a href="discover.html" class="text-decoration-none text-muted">Discover</a></li>
+                        <li><a href="categories.html" class="text-decoration-none text-muted">Categories</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+                        <li><a href="feedback.html" class="text-decoration-none text-muted">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-muted">Breakfast & Brunch</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Lunch Spots</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Dinner Destinations</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Street Food</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Cafés</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Newsletter</h5>
+                    <p class="text-muted">Subscribe for food spot updates!</p>
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Email address" aria-label="Email address">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small text-muted mb-0">&copy; 2023 PutYouOn. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small text-muted mb-0">Designed with <i class="fas fa-heart"></i> in Gaborone</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Toggle between list view and map view
+        document.getElementById('listViewBtn').addEventListener('click', function() {
+            document.getElementById('listView').classList.remove('d-none');
+            document.getElementById('mapView').classList.add('d-none');
+            this.classList.add('active');
+            document.getElementById('mapViewBtn').classList.remove('active');
+        });
+
+        document.getElementById('mapViewBtn').addEventListener('click', function() {
+            document.getElementById('mapView').classList.remove('d-none');
+            document.getElementById('listView').classList.add('d-none');
+            this.classList.add('active');
+            document.getElementById('listViewBtn').classList.remove('active');
+            
+            // Initialize map if it hasn't been already
+            if (!window.mapInitialized) {
+                initMap();
+                window.mapInitialized = true;
+            }
+        });
+
+        // Initialize Leaflet map
+        function initMap() {
+            // Center map on Gaborone
+            var map = L.map('map').setView([-24.6282, 25.9231], 13);
+            
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add markers for restaurants
+            var restaurants = [
+                {name: "The Urban Kitchen", lat: -24.6582, lng: 25.9131, rating: 4.5, type: "Brunch", price: "$$"},
+                {name: "Spice Fusion", lat: -24.6382, lng: 25.9031, rating: 4.0, type: "Dinner", price: "$$$"},
+                {name: "Street Corner Café", lat: -24.6482, lng: 25.9181, rating: 5.0, type: "Street Food", price: "$"},
+                {name: "Aroma Café", lat: -24.6282, lng: 25.9231, rating: 4.5, type: "Café", price: "$$"},
+                {name: "Mouthful BBQ", lat: -24.6182, lng: 25.9331, rating: 3.5, type: "BBQ", price: "$$"},
+                {name: "Taste of Botswana", lat: -24.6682, lng: 25.9431, rating: 4.5, type: "Local Cuisine", price: "$$"}
+            ];
+            
+            // Add each restaurant marker
+            restaurants.forEach(function(restaurant) {
+                var marker = L.marker([restaurant.lat, restaurant.lng]).addTo(map);
+                
+                // Create popup content
+                var popupContent = `
+                    <strong>${restaurant.name}</strong><br>
+                    <span class="badge bg-secondary">${restaurant.type}</span> 
+                    <span>${restaurant.price}</span><br>
+                    Rating: ${restaurant.rating} ★<br>
+                    <a href="#" class="btn btn-sm btn-primary mt-2">View Details</a>
+                `;
+                
+                marker.bindPopup(popupContent);
+            });
+        }
+    </script>
+</body>
+</html>
