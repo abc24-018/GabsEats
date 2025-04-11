@@ -3,42 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover Gaborone's Hidden Food Spots</title>
-    <link rel="stylesheet" href="style.css">
+    <title>PutYouOn - Discover Gaborone's Hidden Food Spots</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="images/logo.png" alt="Gaborone Food Spots Logo">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="PutYouOn Logo" class="logo">
+                PutYouOn
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="discover.html">Discover</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="feedback.html">Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-lg-3">
+                    <input class="form-control me-2" type="search" placeholder="Find a food spot..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+                </form>
             </div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="explore.html">Explore</a></li>
-                <li><a href="submit.html">Submit a Spot</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center">
+                    <h1 class="fw-bold text-white">Discover Gaborone's Hidden Food Gems</h1>
+                    <p class="lead text-white mb-4">Explore local favorites and secret spots known only to food enthusiasts</p>
+                    <a href="discover.html" class="btn btn-primary btn-lg">Start Exploring</a>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <h1>Discover Gaborone's Best Kept Culinary Secrets</h1>
-            <a href="explore.html" class="btn">Explore Now</a>
-        </section>
-
-        <section class="featured-spots">
-            <h2>Featured Spots</h2>
-            <div class="spot-grid">
-                <!-- Spot cards will be added here -->
+    <!-- Featured Spots -->
+    <section class="featured-spots py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="display-5 fw-bold">Featured Food Spots</h2>
+                <p class="lead">Handpicked culinary experiences you shouldn't miss</p>
             </div>
-        </section>
-    </main>
+            <div class="row">
+                <!-- Spot 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm spot-card">
+                        <img src="images/restaurants/spot1.jpg" class="card-img-top" alt="The Urban Kitchen">
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-2">Brunch</span>
+                            <h5 class="card-title">The Urban Kitchen</h5>
+                            <p class="card-text">A cozy brunch spot with amazing pancakes and coffee in CBD.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="ratings">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="ms-1">4.5</span>
+                                </div>
+                                <span class="price-range">$$</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Spot 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm spot-card">
+                        <img src="images/restaurants/spot2.jpg" class="card-img-top" alt="Spice Fusion">
+                        <div class="card-body">
+                            <span class="badge bg-danger mb-2">Dinner</span>
+                            <h5 class="card-title">Spice Fusion</h5>
+                            <p class="card-text">Hidden gem serving authentic Indian cuisine with a local twist.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="ratings">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="far fa-star text-warning"></i>
+                                    <span class="ms-1">4.0</span>
+                                </div>
+                                <span class="price-range">$$$</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Spot 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm spot-card">
+                        <img src="images/restaurants/spot3.jpg" class="card-img-top" alt="Street Corner Café">
+                        <div class="card-body">
+                            <span class="badge bg-success mb-2">Street Food</span>
+                            <h5 class="card-title">Street Corner Café</h5>
+                            <p class="card-text">Local street food favorites served in a casual setting by Main Mall.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="ratings">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <span class="ms-1">5.0</span>
+                                </div>
+                                <span class="price-range">$</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="discover.html" class="btn btn-outline-primary">View All Food Spots</a>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2024 Discover Gaborone's Hidden Food Spots</p>
+    <!-- Latest Reviews -->
+    <section class="latest-reviews py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="display-5 fw-bold">Latest Reviews</h2>
+                <p class="lead">See what food enthusiasts are saying</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <div class="avatar me-3">
+                                    <div class="avatar-placeholder bg-primary">TM</div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">Tebogo M.</h6>
+                                    <div class="ratings small">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="ms-auto">
+                                    <small class="text-muted">2 days ago</small>
+                                </div>
+                            </div>
+                            <h5 class="card-title">The Urban Kitchen</h5>
+                            <p class="card-text">"The pancakes here are a game-changer! I've been searching for authentic breakfast spots, and this place exceeds expectations. The coffee is freshly brewed and the service is top-notch."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <div class="avatar me-3">
+                                    <div class="avatar-placeholder bg-success">LK</div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">Lorato K.</h6>
+                                    <div class="ratings small">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="far fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="ms-auto">
+                                    <small class="text-muted">1 week ago</small>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Spice Fusion</h5>
+                            <p class="card-text">"I never knew this place existed until PutYouOn! The curry dishes are authentic and flavorful. Perfect spice level and the staff is friendly. Easily the best Indian food in Gaborone."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="display-5 fw-bold">Browse By Category</h2>
+                <p class="lead">Find exactly what you're craving</p>
+            </div>
+            <div class="row text-center">
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="#" class="category-link">
+                        <div class="category-icon mb-3">
+                            <img src="images/icons/breakfast.png" alt="Breakfast & Brunch" class="img-fluid">
+                        </div>
+                        <h5>Breakfast</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="#" class="category-link">
+                        <div class="category-icon mb-3">
+                            <img src="images/icons/lunch.png" alt="Lunch" class="img-fluid">
+                        </div>
+                        <h5>Lunch</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="#" class="category-link">
+                        <div class="category-icon mb-3">
+                            <img src="images/icons/dinner.png" alt="Dinner" class="img-fluid">
+                        </div>
+                        <h5>Dinner</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="#" class="category-link">
+                        <div class="category-icon mb-3">
+                            <img src="images/icons/breakfast.png" alt="Cafés" class="img-fluid">
+                        </div>
+                        <h5>Cafés</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="#" class="category-link">
+                        <div class="category-icon mb-3">
+                            <img src="images/icons/lunch.png" alt="Street Food" class="img-fluid">
+                        </div>
+                        <h5>Street Food</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="#" class="category-link">
+                        <div class="category-icon mb-3">
+                            <img src="images/icons/dinner.png" alt="Specialty" class="img-fluid">
+                        </div>
+                        <h5>Specialty</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="categories.html" class="btn btn-outline-primary">View All Categories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h3 class="mb-4">Get the Latest Food Discoveries</h3>
+                    <p class="mb-4">Subscribe to our newsletter for weekly updates on new food spots, special offers, and exclusive food events in Gaborone.</p>
+                    <form class="row g-3 justify-content-center">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control form-control-lg" placeholder="Your email address">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-light btn-lg w-100">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>About PutYouOn</h5>
+                    <p>We help locals and visitors discover hidden food gems in Gaborone, supporting local businesses and building a community of food enthusiasts.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="discover.html" class="text-white">Discover</a></li>
+                        <li><a href="categories.html" class="text-white">Categories</a></li>
+                        <li><a href="about.html" class="text-white">About</a></li>
+                        <li><a href="feedback.html" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Food Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Breakfast & Brunch</a></li>
+                        <li><a href="#" class="text-white">Lunch Spots</a></li>
+                        <li><a href="#" class="text-white">Dinner Destinations</a></li>
+                        <li><a href="#" class="text-white">Cafés</a></li>
+                        <li><a href="#" class="text-white">Street Food</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt me-2"></i> Gaborone, Botswana</p>
+                        <p><i class="fas fa-envelope me-2"></i> info@putyouon.com</p>
+                        <p><i class="fas fa-phone me-2"></i> +267 71 234 567</p>
+                    </address>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="small mb-0">&copy; 2025 PutYouOn. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
 </body>
 </html>
